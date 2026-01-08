@@ -12,8 +12,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     const buffer = Buffer.from(await file.arrayBuffer());
     const pdfParser = new (PDFParser as any)(null, 1);
-
-    // 關鍵點：在這裡指定 Promise 的回傳類型為 NextResponse
     return new Promise<NextResponse>((resolve) => {
       pdfParser.on("pdfParser_dataError", (errData: any) => {
         console.error("PDF 解析錯誤:", errData);
