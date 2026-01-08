@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"nkust-calendar/handlers"
 	"os"
+	"net/http"
 )
 
 func main() {
@@ -17,7 +18,9 @@ func main() {
     ExposeHeaders:    []string{"Content-Disposition"},
     AllowCredentials: true,
 }))
-
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"status": "UP", "message": "NKUST API is running"})
+	})
 	// 設定 API 路由
 	r.POST("/api/export-ics", handlers.ExportICSHandler)
 	port := os.Getenv("PORT")

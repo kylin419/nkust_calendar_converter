@@ -6,10 +6,13 @@ import AcademicEventList from "@/app/components/AcademicEventList";
 import { parseAcademicCalendar } from "@/app/utils/academicParser";
 import { AcademicCalendarInfo } from "@/app/types/academic";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8081";
+
 export default function CalendarTool() {
   const [data, setData] = useState<AcademicCalendarInfo | null>(null);
   const [loading, setLoading] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+
   const toggleEvent = (id: string) => {
     if (!data) return;
     setData({
@@ -37,6 +40,7 @@ export default function CalendarTool() {
     formData.append("file", file);
 
     try {
+      // 呼叫 Vercel 內建的 API Route
       const res = await fetch("/api/extract-pdf", {
         method: "POST",
         body: formData,
@@ -65,7 +69,8 @@ export default function CalendarTool() {
 
     setIsDownloading(true);
     try {
-      const response = await fetch("http://localhost:8081/api/export-ics", {
+      // 修正：動態呼叫 Render 後端位址
+      const response = await fetch(`${API_BASE_URL}/api/export-ics`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -87,7 +92,7 @@ export default function CalendarTool() {
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error(error);
-      alert("ICS 匯出失敗");
+      alert("ICS 匯出失敗，請確認伺服器連線");
     } finally {
       setIsDownloading(false);
     }
@@ -106,15 +111,15 @@ export default function CalendarTool() {
           </p>
 
           <label
-            htmlFor="pdf-upload" // 建立明確連結
+            htmlFor="pdf-upload"
             className={`cursor-pointer px-10 py-4 rounded-full font-bold shadow-lg transition inline-block text-white ${
               loading ? "bg-gray-400" : "bg-[#004b93] hover:bg-blue-800"
             }`}
           >
             {loading ? "讀取中..." : "選擇校曆 PDF"}
             <input
-              id="pdf-upload" 
-              title="請選擇校曆 PDF 檔案" 
+              id="pdf-upload"
+              title="請選擇校曆 PDF 檔案"
               type="file"
               accept=".pdf"
               className="hidden"
