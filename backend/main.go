@@ -12,12 +12,21 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-    AllowOrigins:     []string{"https://nkust-cal-convert.vercel.app","http://localhost:3000"}, 
-    AllowMethods:     []string{"POST", "OPTIONS"},
-    AllowHeaders:     []string{"Content-Type"},
-    ExposeHeaders:    []string{"Content-Disposition"},
-    AllowCredentials: true,
-}))
+        AllowOrigins: []string{
+            "https://nkust-cal-convert.vercel.app",
+            "http://localhost:3000",
+        },
+        AllowMethods: []string{"POST", "GET", "OPTIONS", "PUT", "DELETE"},
+        AllowHeaders: []string{
+            "Origin", 
+            "Content-Type", 
+            "Accept", 
+            "Authorization", 
+            "X-Requested-With",
+        },
+        ExposeHeaders:    []string{"Content-Disposition"},
+        AllowCredentials: true,
+    }))
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"status": "UP", "message": "NKUST API is running"})
 	})
