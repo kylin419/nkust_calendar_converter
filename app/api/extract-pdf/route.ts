@@ -6,7 +6,7 @@ import "pdfjs-dist/legacy/build/pdf.worker.mjs";
 function isTextItem(item: unknown): item is TextItem {
   return typeof item === "object" && item !== null && "str" in item;
 }
-
+export const runtime = "nodejs";
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
