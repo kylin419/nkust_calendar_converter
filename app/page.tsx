@@ -6,7 +6,7 @@ import AcademicEventList from "@/app/components/AcademicEventList";
 import { parseAcademicCalendar } from "@/app/utils/academicParser";
 import { AcademicCalendarInfo } from "@/app/types/academic";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8081";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 export default function CalendarTool() {
   const [data, setData] = useState<AcademicCalendarInfo | null>(null);
@@ -69,7 +69,6 @@ export default function CalendarTool() {
 
     setIsDownloading(true);
     try {
-      // 修正：動態呼叫 Render 後端位址
       const response = await fetch(`${API_BASE_URL}/api/export-ics`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
