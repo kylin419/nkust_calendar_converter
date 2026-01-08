@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 針對 Turbopack 的配置
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        canvas: "./empty.js",
+      },
+    },
+  },
   webpack: (config) => {
-    // 忽略伺服器端不需要的二進制依賴
     config.resolve.alias.canvas = false;
     config.resolve.alias.encoding = false;
     return config;
