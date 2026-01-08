@@ -12,7 +12,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-    AllowOrigins:     []string{"https://nkust-cal-convert.vercel.app/"}, 
+    AllowOrigins:     []string{"https://nkust-cal-convert.vercel.app","http://localhost:3000"}, 
     AllowMethods:     []string{"POST", "OPTIONS"},
     AllowHeaders:     []string{"Content-Type"},
     ExposeHeaders:    []string{"Content-Disposition"},
