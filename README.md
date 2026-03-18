@@ -33,5 +33,7 @@
 **初次使用載入和轉換時間較長，請使用者耐心等候～**
 
 ## 使用技術
-- 前端：Next.js/tailwind
-- 後端：Golang
+- 前端：Next.js / React / TailwindCSS  
+- 後端：Golang  
+- PDF 處理：自訂解析邏輯  
+- 輸出格式：ICS（iCalendar）
