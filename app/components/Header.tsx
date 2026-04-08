@@ -20,7 +20,7 @@ export default function Header() {
           </div>
           <div>
             <h1 className="text-[#004b93] font-black text-lg md:text-xl tracking-tight">
-              高科大<span className="hidden xs:inline">行事曆轉換器</span>
+              高科大行事曆轉換器
             </h1>
             <p className="text-gray-400 text-[8px] md:text-[10px] uppercase tracking-widest font-medium">
               NKUST Calendar Converter
