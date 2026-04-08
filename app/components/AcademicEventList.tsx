@@ -18,7 +18,7 @@ export default function AcademicEventList({
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 animate-in fade-in slide-in-from-bottom-4">
       {/* 頂部控制列 */}
-      <div className="bg-[#004b93] p-4 px-6 flex justify-between items-center text-white">
+      <div className="bg-[#004b93] p-3 px-4 md:p-4 md:px-6 flex justify-between items-center text-white">
         <div className="flex items-center gap-3">
           <input
             type="checkbox"
@@ -37,7 +37,7 @@ export default function AcademicEventList({
           <div
             key={event.id}
             onClick={() => onToggle(event.id)}
-            className={`flex items-center gap-4 p-4 border-b border-gray-50 cursor-pointer transition-all hover:bg-gray-50
+            className={`flex items-center gap-3 md:gap-4 p-3 md:p-4 border-b border-gray-50 cursor-pointer transition-all hover:bg-gray-50
               ${event.isSelected ? "bg-blue-50/30" : "opacity-40 grayscale"}`}
           >
             <div

@@ -100,8 +100,8 @@ export default function CalendarTool() {
   return (
     <main className="min-h-screen bg-[#f4f7f9]">
       <Header />
-      <div className="max-w-4xl mx-auto p-6 space-y-8">
-        <div className="bg-white p-10 rounded-xl shadow-lg border-t-4 border-[#b4975a] text-center">
+      <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-6 md:space-y-8">
+        <div className="bg-white p-6 md:p-10 rounded-xl shadow-lg border-t-4 border-[#b4975a] text-center">
           <h2 className="text-2xl font-bold text-[#004b93]">
             NKUST {data ? data.semester : ""} 校曆轉行事曆
           </h2>
@@ -111,7 +111,7 @@ export default function CalendarTool() {
 
           <label
             htmlFor="pdf-upload"
-            className={`cursor-pointer px-10 py-4 rounded-full font-bold shadow-lg transition inline-block text-white ${
+            className={`cursor-pointer px-6 py-3 w-full md:w-auto md:px-10 md:py-4 rounded-full font-bold shadow-lg transition inline-block text-white ${
               loading ? "bg-gray-400" : "bg-[#004b93] hover:bg-blue-800"
             }`}
           >
@@ -135,11 +135,11 @@ export default function CalendarTool() {
               onToggle={toggleEvent}
               onToggleAll={toggleAll}
             />
-            <div className="flex justify-center py-10">
+            <div className="flex justify-center py-6 md:py-10">
               <button
                 onClick={handleExport}
                 disabled={isDownloading}
-                className="bg-[#b4975a] text-white px-12 py-4 rounded-full font-bold shadow-xl hover:scale-105 active:scale-95 transition-all disabled:bg-gray-400"
+                className="bg-[#b4975a] text-white px-8 py-3 w-full md:w-auto md:px-12 md:py-4 rounded-full font-bold shadow-xl hover:scale-105 active:scale-95 transition-all disabled:bg-gray-400"
               >
                 {isDownloading
                   ? "檔案產生中..."

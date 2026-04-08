@@ -7,7 +7,19 @@ export default function InstructionsPage() {
   const steps = [
     {
       title: "下載 PDF",
-      desc: "進入高科大教務處網頁，點選行事曆，下載學期行事曆 PDF 檔案。",
+      desc: (
+        <>
+          進入
+          <a
+            href="https://acad.nkust.edu.tw/index.php"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            高科大教務處網頁
+          </a>
+          ，點選行事曆，下載學期行事曆 PDF 檔案。
+        </>
+      ),
       icon: "",
     },
     {
